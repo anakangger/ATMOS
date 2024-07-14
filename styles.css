@@ -17,7 +17,6 @@ body {
 
 .columns {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     margin-bottom: 20px;
 }
@@ -27,7 +26,6 @@ body {
     flex-direction: column;
     align-items: center;
     margin: 10px;
-    width: 100%; /* Full width for smaller screens */
     max-width: 300px; /* Max width for larger screens */
 }
 
@@ -88,7 +86,19 @@ body {
 
 .additional-buttons {
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
     margin-top: 20px;
+}
+
+/* Media Query for Mobile Devices */
+@media screen and (max-width: 600px) {
+    .columns {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .column {
+        width: 100%; /* Full width for smaller screens */
+        max-width: none; /* No max-width for smaller screens */
+    }
 }
