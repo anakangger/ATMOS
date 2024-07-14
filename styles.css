@@ -1,0 +1,109 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Tahoma, sans-serif;
+    background-color: #121212;
+    color: white;
+}
+
+.container {
+    text-align: center; /* Mengatur posisi konten ke tengah */
+    padding: 20px; /* Memberi ruang di sekitar konten */
+}
+
+.title {
+    font-size: 2.5em;
+    margin-bottom: 20px; /* Memberi ruang di bawah judul */
+}
+
+.columns {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px; /* Memberi ruang di atas kolom */
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px; /* Menyesuaikan margin di sekitar kolom */
+    max-width: 300px; /* Maksimum lebar untuk layar yang lebih besar */
+}
+
+.button {
+    display: inline-block;
+    margin: 10px;
+    padding: 15px 25px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    text-align: center;
+    width: 100%;
+    transition: background-color 0.3s;
+}
+
+.blue {
+    background-color: #007BFF;
+}
+
+.blue:hover {
+    background-color: #0056b3;
+}
+
+.orange {
+    background-color: #FFA500;
+}
+
+.orange:hover {
+    background-color: #cc8400;
+}
+
+.green {
+    background-color: #28a745;
+}
+
+.green:hover {
+    background-color: #1e7e34;
+}
+
+.gray {
+    background-color: #6c757d;
+}
+
+.gray:hover {
+    background-color: #5a6268;
+}
+
+.red {
+    background-color: #dc3545;
+}
+
+.red:hover {
+    background-color: #c82333;
+}
+
+.additional-buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+/* Media Query untuk Perangkat Mobile */
+@media screen and (max-width: 600px) {
+    .columns {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .column {
+        width: 100%; /* Lebar penuh untuk layar yang lebih kecil */
+        max-width: none; /* Tidak ada maksimum lebar untuk layar yang lebih kecil */
+        margin: 10px 0; /* Menyesuaikan margin untuk tata letak yang lebih baik */
+    }
+}
