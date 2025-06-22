@@ -1,105 +1,277 @@
-body {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+/* Reset CSS dasar untuk konsistensi */
+* {
     margin: 0;
-    font-family: Tahoma, sans-serif;
-    background-color: #121212;
-    color: white;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-.title {
-    font-size: 2.5em;
-    margin-bottom: 30px;
-}
-
-.columns {
+body {
+    font-family: 'Poppins', sans-serif;
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
-}
-
-.column {
-    display: flex;
-    flex-direction: column;
     align-items: center;
-    margin: 50px 30px 30px 30px; /* Menyesuaikan margin untuk menyelaraskan posisi tombol */
-    max-width: 300px;
+    min-height: 100vh;
+    background-color: #000000; /* Latar belakang hitam pekat */
+    color: #E0E0F0;
+    line-height: 1.6;
+    padding: 20px;
+    overflow: hidden;
 }
 
-.button {
-    display: inline-block;
-    margin: 10px;
-    padding: 15px 25px;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    text-decoration: none;
+.main-card {
+    background-color: rgba(32, 32, 48, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
     text-align: center;
+    padding: 50px 40px;
+    max-width: 500px;
     width: 100%;
-    transition: background-color 0.3s;
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
 }
 
-.blue {
-    background-color: #007BFF;
+h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 4em;
+    font-weight: 900;
+    color: #E0E0F0;
+    margin-bottom: 40px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
 }
 
-.blue:hover {
-    background-color: #0056b3;
+p { /* Tidak lagi relevan karena p sudah dihapus dari HTML */
+    font-size: 1.1em;
+    margin-bottom: 40px;
+    color: #B0B0C0;
 }
 
-.orange {
-    background-color: #FFA500;
-}
-
-.orange:hover {
-    background-color: #cc8400;
-}
-
-.green {
-    background-color: #28a745;
-}
-
-.green:hover {
-    background-color: #1e7e34;
-}
-
-.gray {
-    background-color: #6c757d;
-}
-
-.gray:hover {
-    background-color: #5a6268;
-}
-
-.red {
-    background-color: #dc3545;
-}
-
-.red:hover {
-    background-color: #c82333;
-}
-
-.additional-buttons {
+.button-group {
     display: flex;
-    justify-content: center;
-    margin-top: 20px;
+    flex-direction: column; /* Default: susun vertikal */
+    gap: 18px; /* Jarak antar tombol */
+    align-items: center;
 }
 
-/* Media Query for Mobile Devices */
-@media screen and (max-width: 600px) {
-    .columns {
-        flex-direction: column;
-        align-items: center;
-		margin-top: 100px;
+.action-button {
+    display: inline-flex; /* Menggunakan inline-flex untuk ikon dan teks */
+    justify-content: center;
+    align-items: center;
+    padding: 18px 40px;
+    font-size: 1.2em;
+    font-weight: 600;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 320px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Penyesuaian untuk ikon di dalam tombol */
+.action-button .fas,
+.action-button .fab { /* Tambahkan .fab agar gaya berlaku untuk ikon merek juga */
+    margin-right: 0; /* Default, akan ditimpa jika ada teks */
+}
+
+/* Gaya khusus untuk tombol yang hanya berisi ikon */
+.action-button.btn-icon-only {
+    padding: 18px; /* Padding lebih simetris untuk ikon */
+    width: 60px; /* Lebar dan tinggi tetap */
+    height: 60px;
+    max-width: 60px; /* Memastikan ukurannya kompak */
+    font-size: 1.5em; /* Ikon lebih besar */
+}
+.action-button.btn-icon-only .fas,
+.action-button.btn-icon-only .fab { /* Pastikan tidak ada margin kanan pada ikon di tombol ikon-only */
+    margin-right: 0;
+}
+
+
+.action-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0));
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.action-button:hover::before {
+    opacity: 1;
+}
+
+/* --- Gaya Warna-warni untuk Setiap Tombol --- */
+
+/* Biru */
+.action-button.btn-blue {
+    background: linear-gradient(135deg, #5C6BC0 0%, #3F51B5 100%);
+}
+.action-button.btn-blue:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #6B7EDC 0%, #536DE6 100%);
+}
+.action-button.btn-blue:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Merah */
+.action-button.btn-red {
+    background: linear-gradient(135deg, #EF5350 0%, #E53935 100%);
+}
+.action-button.btn-red:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #FF6F6C 0%, #F44336 100%);
+}
+.action-button.btn-red:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Hijau */
+.action-button.btn-green {
+    background: linear-gradient(135deg, #66BB6A 0%, #43A047 100%);
+}
+.action-button.btn-green:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #81C784 0%, #66BB6A 100%);
+}
+.action-button.btn-green:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Ungu */
+.action-button.btn-purple {
+    background: linear-gradient(135deg, #AB47BC 0%, #8E24AA 100%);
+}
+.action-button.btn-purple:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #C158DC 0%, #A647BC 100%);
+}
+.action-button.btn-purple:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Oranye */
+.action-button.btn-orange {
+    background: linear-gradient(135deg, #FFA726 0%, #FB8C00 100%);
+}
+.action-button.btn-orange:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #FFB74D 0%, #FF9800 100%);
+}
+.action-button.btn-orange:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Pink */
+.action-button.btn-pink {
+    background: linear-gradient(135deg, #EC407A 0%, #D81B60 100%);
+}
+.action-button.btn-pink:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #F48FB1 0%, #E91E63 100%);
+}
+.action-button.btn-pink:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Kuning */
+.action-button.btn-yellow {
+    background: linear-gradient(135deg, #FFEE58 0%, #FFEB3B 100%);
+    color: #424242; /* Ubah warna teks agar terlihat di latar kuning */
+}
+.action-button.btn-yellow:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #FFF176 0%, #FFEE58 100%);
+}
+.action-button.btn-yellow:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Cyan */
+.action-button.btn-cyan {
+    background: linear-gradient(135deg, #4DD0E1 0%, #00BCD4 100%);
+}
+.action-button.btn-cyan:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #80DEEA 0%, #26C6DA 100%);
+}
+.action-button.btn-cyan:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Teal */
+.action-button.btn-teal {
+    background: linear-gradient(135deg, #26A69A 0%, #00897B 100%);
+}
+.action-button.btn-teal:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #4DB6AC 0%, #26A69A 100%);
+}
+.action-button.btn-teal:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+/* Dark Red */
+.action-button.btn-dark-red {
+    background: linear-gradient(135deg, #D32F2F 0%, #C62828 100%);
+}
+.action-button.btn-dark-red:hover {
+    transform: translateY(-7px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+    background: linear-gradient(135deg, #E53935 0%, #D32F2F 100%);
+}
+.action-button.btn-dark-red:active {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+/* Media Queries untuk Responsif */
+@media (min-width: 600px) {
+    .button-group {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        max-width: 700px;
     }
-    
-    .column {
-        width: 100%; /* Full width for smaller screens */
-        max-width: none; /* No max-width for smaller screens */
+    .action-button {
+        width: auto;
+        max-width: 250px;
+    }
+    /* Ukuran khusus untuk tombol ikon di layar lebar */
+    .action-button.btn-icon-only {
+        width: 60px; /* Ukuran tetap kompak */
+        height: 60px;
+        max-width: 60px;
     }
 }
